@@ -1,12 +1,5 @@
-
-.review-list {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-  }
-  
-  .review-card__header {
-    width: 30%;
+.review-card {
+    width: 100%;
     margin-bottom: 20px;
     padding: 20px;
     border: 1px solid #ccc;
@@ -14,7 +7,7 @@
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     text-align: center;
   }
-
+  
   .review-card img {
     width: 100%;
     height: 200px;
@@ -22,12 +15,13 @@
     border-radius: 5px;
   }
   
-  @media screen and (max-width: 768px) {
-    .review-card {
-      width: 50%;
-    }
+  .review-card h2 {
+    margin: 10px 0;
+    font-size: 20px;
+    font-weight: 400;
   }
   
-  
-  
+  .review-card p {
+    margin: 10px 0;
+  }
   
