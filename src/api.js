@@ -25,3 +25,14 @@ export const fetchReviewById = (reviewId) => {
         }
     )
 }
+
+export const fetchCommentsForReviewId = (reviewId) => {
+    return ConsApi
+        .get(`/reviews/${reviewId}/comments`)
+        .then(({ data }) => {
+            return data.comments;
+        }).catch(err => {
+                return (err)
+            }
+        )
+}

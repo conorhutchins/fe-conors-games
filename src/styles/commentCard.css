@@ -1,0 +1,35 @@
+.comment-card {
+    background-color: #5dd769;
+    color: #000;
+    border-radius: 8px;
+    padding: 16px;
+    margin-bottom: 16px;
+    text-align: center;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .comment-body {
+    font-size: 16px;
+    margin-bottom: 8px;
+  }
+  
+  .comment-author {
+    font-size: 16px;;
+  }
+  
+  .comment-votes {
+    font-size: 16px;
+  }
+  
+  .comment-created-at {
+    font-size: 16px;
+  }
+  
+  @media screen and (max-width: 768px) {
+    .comment-card {
+      width: 50%;
+    }
+  }
+  
