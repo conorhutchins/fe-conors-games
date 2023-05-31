@@ -12,4 +12,16 @@ export const fetchReviews = () => {
         }).catch(err => {
             return (err)
         }
-)}
+    )
+}
+
+export const fetchReviewById = (reviewId) => {
+    return ConsApi
+        .get(`/reviews/${reviewId}`)
+        .then(({ data }) => {
+            return data.review;
+        }).catch(err => {
+            return (err)
+        }
+    )
+}
