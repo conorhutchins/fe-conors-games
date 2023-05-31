@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { fetchReviewById } from "../api";
-import "../styles/reviewCard.css";
+import ReviewVoting from "./ReviewVoting";
+import "../styles/reviewVoting.css";
 
 const ReviewCard = () => {
     const { reviewId } = useParams();
@@ -37,7 +38,7 @@ const ReviewCard = () => {
               <p>{review.review_body}</p>
               <p>Category: {review.category}</p>
               <p>Created at: {review.created_at}</p>
-              <p>Votes: {review.votes}</p>
+              <ReviewVoting reviewId={review.review_id} initialVotes={review.votes} />
             </main>
           )}
         </article>

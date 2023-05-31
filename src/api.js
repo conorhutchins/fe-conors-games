@@ -26,7 +26,10 @@ export const fetchReviewById = (reviewId) => {
     )
 }
 
-export const voteReview = (reviewId, increment) => {
-    return axios.post(`/api/reviews/${reviewId}`, { inc_votes: increment ? 1 : -1 })
-    .then(response => response.data.review)
+export const voteOnReview = (reviewId, increment) => {
+    return ConsApi
+        .patch(`/review/${reviewId}`, { inc_votes: increment ? 1 : -1 })
+        .then((response) => {
+            return response.data.review;
+        })
 }
