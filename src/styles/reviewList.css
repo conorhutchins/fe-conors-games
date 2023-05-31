@@ -3,6 +3,7 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+    font-size: 16px;
   }
   
   .review-card__header {
