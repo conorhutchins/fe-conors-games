@@ -9,10 +9,7 @@ export const fetchReviews = () => {
         .get(`/reviews`)
         .then(({ data }) => {
             return data;
-        }).catch(err => {
-            return (err)
-        }
-    )
+        })
 }
 
 export const fetchReviewById = (reviewId) => {
@@ -20,10 +17,23 @@ export const fetchReviewById = (reviewId) => {
         .get(`/reviews/${reviewId}`)
         .then(({ data }) => {
             return data.review;
-        }).catch(err => {
-            return (err)
-        }
-    )
+        })
+}
+
+export const voteOnReview = (reviewId, increment) => {
+    return ConsApi
+        .patch(`/review/${reviewId}`, { inc_votes: increment ? 1 : -1 })
+        .then((response) => {
+            return response.data.review;
+        })
+}
+
+export const fetchCommentsForReviewId = (reviewId) => {
+    return ConsApi
+        .get(`/reviews/${reviewId}/comments`)
+        .then(({ data }) => {
+            return data.comments;
+        })
 }
 
 export const voteOnReview = (reviewId, increment) => {
