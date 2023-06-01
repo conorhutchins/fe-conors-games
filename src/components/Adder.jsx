@@ -1,17 +1,28 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { postCommentForAReviewId } from "../api";
-import "../styles/adder.css"
 
-const Adder = ({ reviewId }) => {
-  const [author, setAuthor] = useState("");
+const Adder = ({ reviewId, onCommentAdd }) => {
+  const [author, setAuthor] = useState("tickle122");
   const [body, setBody] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(false);
 
+  useEffect(() => {
+    let timer;
+    if (success) {
+      timer = setTimeout(() => {
+        setSuccess(false);
+      }, 3000); 
+    }
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [success]);
+
   const handleSubmit = (event) => {
     event.preventDefault();
-    if (!author || !body) {
+    if (!body) {
       setError("Please fill out all the required fields.");
       return;
     }
@@ -26,8 +37,8 @@ const Adder = ({ reviewId }) => {
 
     postCommentForAReviewId(reviewId, commentData)
       .then((comment) => {
+        onCommentAdd(comment);
         setSuccess(true);
-        setAuthor("");
         setBody("");
         setIsSubmitting(false);
         setError(null);
@@ -44,22 +55,16 @@ const Adder = ({ reviewId }) => {
 
   return (
     <div className="adder-container">
-      <h2>Have your say & add a comment!</h2>
+      <h2>Have your say, add a comment!</h2>
       {success && <p className="success">Comment posted successfully!</p>}
       {error && <p className="error">{error}</p>}
       <form onSubmit={handleSubmit}>
         <div>
-          <label htmlFor="author">Username</label>
-          <input
-            type="text"
-            id="author"
-            value={author}
-            onChange={(event) => setAuthor(event.target.value)}
-            required
-          />
+          <label htmlFor="author">Username:</label>
+          <p>{author}</p>
         </div>
         <div>
-          <label htmlFor="body">Comment</label>
+          <label htmlFor="body">Comment:</label>
           <textarea
             id="body"
             value={body}
