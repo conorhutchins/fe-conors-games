@@ -11,7 +11,6 @@ const CommentList = ({ reviewId }) => {
       if (reviewId) {
         fetchCommentsForReviewId(reviewId)
           .then((commentsData) => {
-            console.log('Comments data received:', commentsData);
             if (commentsData instanceof Array) {
               setComments(commentsData)
             }

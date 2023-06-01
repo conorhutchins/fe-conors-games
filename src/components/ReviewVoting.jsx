@@ -9,21 +9,26 @@ const ReviewVoting = ({ reviewId, initialVotes }) => {
 
   const handleVote = (increment) => {
     setIsSubmitting(true);
-    setVotes((prevVotes) => increment ? prevVotes + 1 : prevVotes - 1);
+    setVotes((prevVotes) => (increment ? prevVotes + 1 : prevVotes - 1));
     setError(null);
-
+  
     voteOnReview(reviewId, increment)
-      .then((review) => {
-        setVotes(review.votes);
-        setIsSubmitting(false);
+      .then(( response ) => {
+        if (response.votes !== undefined) {
+          setVotes(response.votes);
+          setIsSubmitting(false);
+          setError(null);
+        } else {
+          throw new Error("Failed to vote. Please try again.");
+        }
       })
       .catch((error) => {
+        setError(error.message);
+        setVotes((prevVotes) => (increment ? prevVotes - 1 : prevVotes + 1));
         setIsSubmitting(false);
-        setError("Failed to vote. Please try again.");
-        setVotes((prevVotes) => increment ? prevVotes - 1 : prevVotes + 1);
       });
   };
-    
+
   return (
     <section className="review-voting">
       <p className="vote-count">Votes: {votes}</p>
