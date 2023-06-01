@@ -1,0 +1,72 @@
+.adder-container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .adder-container h2 {
+    margin-bottom: 10px;
+  }
+  
+  .adder-container label {
+    margin-bottom: 8px;
+  }
+  
+  .adder-container .success {
+    color: green;
+    margin-bottom: 10px;
+  }
+  
+  .adder-container .error {
+    color: red;
+    margin-bottom: 10px;
+  }
+  
+  .adder-container form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .adder-container form div {
+    margin-bottom: 10px;
+  }
+  
+  .adder-container form label {
+    font-weight: bold;
+  }
+  
+  .adder-container form .username-label,
+  .adder-container form .comment-label {
+    margin-bottom: 16px;
+  }
+  
+  .adder-container form input,
+  .adder-container form textarea {
+    padding: 5px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+  }
+  
+  .adder-container form button {
+    padding: 10px;
+    background-color: #1c05eb;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .adder-container form button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+  
+  @media screen and (max-width: 390px) {
+    .adder-container {
+      width: 80%;
+      font-size: 14px;
+    }
+  }
+  

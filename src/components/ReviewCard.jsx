@@ -6,6 +6,7 @@ import "../styles/reviewVoting.css";
 import "../styles/reviewCard.css";
 import CommentList from "./CommentList";
 import { format } from "date-fns";
+import Adder from "./Adder";
 
 const ReviewCard = () => {
   const { reviewId } = useParams();
@@ -36,7 +37,8 @@ const ReviewCard = () => {
           <p>{review.review_body}</p>
           <p>Category: {review.category}</p>
           <p>Created at: {format(new Date(review.created_at), "hh:mm 'on' dd/MM/yyyy")}</p>
-          <CommentList reviewId={reviewId} />
+            <CommentList reviewId={reviewId} />
+            <Adder reviewId={reviewId} />
           <ReviewVoting reviewId={review.review_id} initialVotes={review.votes} />
         </main>
       )}

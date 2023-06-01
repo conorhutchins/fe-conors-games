@@ -35,3 +35,11 @@ export const voteOnReview = (reviewId, increment) => {
             return response.data.review;
         })
 }
+
+export const postCommentForAReviewId = (reviewId, commentData) => {
+    return ConsApi
+        .post(`/reviews/${reviewId}/comments`, commentData)
+        .then((response) => {
+            return response.data.comment;
+        })
+}
