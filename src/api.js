@@ -9,10 +9,7 @@ export const fetchReviews = () => {
         .get(`/reviews`)
         .then(({ data }) => {
             return data;
-        }).catch(err => {
-            return (err)
-        }
-    )
+        })
 }
 
 export const fetchReviewById = (reviewId) => {
@@ -20,8 +17,13 @@ export const fetchReviewById = (reviewId) => {
         .get(`/reviews/${reviewId}`)
         .then(({ data }) => {
             return data.review;
-        }).catch(err => {
-            return (err)
-        }
-    )
+        })
+}
+
+export const fetchCommentsForReviewId = (reviewId) => {
+    return ConsApi
+        .get(`/reviews/${reviewId}/comments`)
+        .then(({ data }) => {
+            return data.comments;
+        })
 }
