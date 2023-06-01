@@ -5,6 +5,7 @@ import ReviewVoting from "./ReviewVoting";
 import "../styles/reviewVoting.css";
 import "../styles/reviewCard.css";
 import CommentList from "./CommentList";
+import { format } from "date-fns";
 
 const ReviewCard = () => {
   const { reviewId } = useParams();
@@ -13,35 +14,13 @@ const ReviewCard = () => {
 
   useEffect(() => {
     if (reviewId) {
-      fetchReviewById(reviewId)
-        .then((reviewFromApi) => {
-          setReview(reviewFromApi);
-          setIsLoading(false);
-        })
+      fetchReviewById(reviewId).then((reviewFromApi) => {
+        setReview(reviewFromApi);
+        setIsLoading(false);
+      });
     }
   }, [reviewId]);
 
-    return (
-        <article>
-          {isLoading ? (
-            <p>Loading...</p>
-          ) : (
-            <main className="review-card">
-              <h1>{review.title}</h1>
-              <h2>Designer: {review.designer}</h2>
-              <h3>Owner: {review.owner}</h3>
-              <figure>
-                <img src={review.review_img_url} alt={`An image of ${review.title}`} />
-              </figure>
-              <p>{review.review_body}</p>
-              <p>Category: {review.category}</p>
-              <p>Created at: {review.created_at}</p>
-              <ReviewVoting reviewId={review.review_id} initialVotes={review.votes} />
-            </main>
-          )}
-        </article>
-      );
-    };
   return (
     <article>
       {isLoading ? (
@@ -56,12 +35,13 @@ const ReviewCard = () => {
           </figure>
           <p>{review.review_body}</p>
           <p>Category: {review.category}</p>
-          <p>Created at: {review.created_at}</p>
-          <p>Votes: {review.votes}</p>
+          <p>Created at: {format(new Date(review.created_at), "hh:mm 'on' dd/MM/yyyy")}</p>
           <CommentList reviewId={reviewId} />
+          <ReviewVoting reviewId={review.review_id} initialVotes={review.votes} />
         </main>
       )}
     </article>
   );
+};
 
 export default ReviewCard;

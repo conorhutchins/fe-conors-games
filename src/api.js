@@ -20,14 +20,6 @@ export const fetchReviewById = (reviewId) => {
         })
 }
 
-export const voteOnReview = (reviewId, increment) => {
-    return ConsApi
-        .patch(`/review/${reviewId}`, { inc_votes: increment ? 1 : -1 })
-        .then((response) => {
-            return response.data.review;
-        })
-}
-
 export const fetchCommentsForReviewId = (reviewId) => {
     return ConsApi
         .get(`/reviews/${reviewId}/comments`)

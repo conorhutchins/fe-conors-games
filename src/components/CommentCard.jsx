@@ -2,12 +2,12 @@ import { format } from "date-fns";
 import "../styles/commentCard.css";
 
 const CommentCard = ({ comment }) => {
-  const { body, votes, author, created_at } = comment;
+  const { id, body, votes, author, created_at } = comment;
   
   const formattedDate = format(new Date(created_at), "hh:mm 'on' dd/MM/yyyy");
 
   return (
-    <section className="comment-card">
+    <section className="comment-card" key ={id}>
       <p className="comment-body">{body}</p>
       <p className="comment-author">Author: {author}</p>
       <p className="comment-votes">Votes: {votes}</p>
