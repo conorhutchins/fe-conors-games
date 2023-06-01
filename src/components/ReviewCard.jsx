@@ -38,8 +38,8 @@ const ReviewCard = () => {
           <p>Category: {review.category}</p>
           <p>Created at: {format(new Date(review.created_at), "hh:mm 'on' dd/MM/yyyy")}</p>
           <ReviewVoting reviewId={review.review_id} initialVotes={review.votes} />
-            <CommentList reviewId={reviewId} />
             <Adder reviewId={reviewId} />
+            <CommentList reviewId={reviewId} />
         </main>
       )}
     </article>
