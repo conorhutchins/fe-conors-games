@@ -16,10 +16,6 @@ const ReviewCard = () => {
           setReview(reviewFromApi);
           setIsLoading(false);
         })
-        .catch((error) => {
-          console.error("Error fetching review:", error);
-          setIsLoading(false);
-        });
     }
   }, [reviewId]);
 

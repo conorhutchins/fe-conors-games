@@ -17,10 +17,6 @@ const CommentList = ({ reviewId }) => {
             }
             setIsLoading(false)
           })
-
-          .catch((error) => {
-              console.error('Error fetching comments:', error);
-          });
     }
 }, [reviewId]);
 
