@@ -4,11 +4,19 @@ const ConsApi = axios.create({
     baseURL: "https://conors-game.onrender.com/api",
 })
 
-export const fetchReviews = () => {
+export const fetchReviews = (category) => {
+    let query = ""
+    if (!category) {
+        query = "/reviews"
+    } else {
+        query = `/reviews?category=${category}`
+
+    }
     return ConsApi
-        .get(`/reviews`)
+        .get(query)
         .then(({ data }) => {
-            return data;
+        return data.reviews;
+            
         })
 }
 
@@ -43,3 +51,17 @@ export const postCommentForAReviewId = (reviewId, commentData) => {
             return response.data.comment;
         })
 }
+
+export const fetchCategories = () => {
+    return ConsApi.get(`/categories`)
+        .then((response) => {
+      return response.data;
+    });
+  };
+export const fetchReviewsByCategory = (category) => {
+    return ConsApi
+        .get(`/reviews?category=${category}`)
+        .then(({ data }) => {
+            return data.reviews;
+        });
+};
