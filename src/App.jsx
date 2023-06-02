@@ -14,8 +14,8 @@ function App() {
         <Nav />
         <Routes>
           <Route exact path="/" element={<Home />} />
-          <Route exact path="/reviews" element={<ReviewList />} />
-          <Route path = "/reviews/:reviewId" element={<ReviewCard />} />
+          <Route path="/reviews" element={<ReviewList />} />
+          <Route path="/reviews/:reviewId" element={<ReviewCard />} />
         </Routes>
       </>
     </BrowserRouter>
