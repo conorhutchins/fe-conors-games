@@ -19,13 +19,13 @@ Follow the steps below to clone the repository, install the necessary dependenci
 
    ```bash
    git clone https://github.com/conorhutchins/fe-conors-games
-
+    ```
 2. **Install dependencies**
 
  ```bash
 cd fe-conors-games
 npm install
-
+```
 3. **Start the development server**
 
  ```bash
