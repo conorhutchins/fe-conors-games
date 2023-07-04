@@ -22,12 +22,15 @@ Follow the steps below to clone the repository, install the necessary dependenci
 
 2. **Install dependencies**
 
+ ```bash
 cd fe-conors-games
 npm install
 
 3. **Start the development server**
 
+ ```bash
 npm run dev
+```
 
 This will start the development server using Vite, and the frontend can be accessed through the localhost server.
 
